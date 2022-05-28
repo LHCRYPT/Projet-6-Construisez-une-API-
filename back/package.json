@@ -1,0 +1,14 @@
+{
+  "name": "projet-6-api",
+  "version": "1.0.0",
+  "description": "Backend API avec Express et MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lynda Hamadouche",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
