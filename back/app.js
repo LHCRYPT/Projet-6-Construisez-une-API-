@@ -1,9 +1,9 @@
-const express = require('express'); //on importe express avec une constante
-
-const app = express(); //création de notre appli avec express
+const express = require('express');
+const app = express(); //pareil que bodyparser
 const mongoose = require('mongoose');
+const path = require('path'); //pour accéder au path de notre serveur 
 
-const Thing = require('./models/thing'); //l'enlever ?
+const Thing = require('./models/thing');
 
 const stuffRoutes = require('./routes/stuffs');
 const userRoutes = require('./routes/user');//importation du routeur 
@@ -14,6 +14,8 @@ mongoose.connect('mongodb+srv://toto:56_cPy-3@cluster0.m8xxyhv.mongodb.net/?retr
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+
+ 
 app.use(express.json()); //pareil que bodyparser
 
 app.use((req, res, next) => {
@@ -25,10 +27,10 @@ app.use((req, res, next) => {
 
 
 app.use('/api/stuff', stuffRoutes);
+app.use('/api/auth', userRoutes); //on enregistre le routeur lié à l'authentification
+app.use('/images', express.static(path.join(__dirname, 'images'))); //ça indique à Express de gérer la ressource images de manière statique (un sous-répertoire de notre répertoire de base, __dirname) à chaque fois qu'elle reçoit une requête vers la route /images.
 
-
-module.exports = app; //on exporte cette appli/constante pour pouvoir y accéder depuis les autres fichiers de notre projet comme le serveur node
-
+module.exports = app;
 
   /*
     app.get('/sauces', (req, res, next) => { // pour créer une route entre / je mets le nom de la route /sauces/ que j'ai inventée (pour aller sur une page)
