@@ -1,6 +1,7 @@
 const express = require('express'); //on importe express avec une constante
 
 const app = express(); //création de notre appli avec express
+const mongoose = require('mongoose');
 
 app.use(express.json()); //pareil que bodyparser
 
