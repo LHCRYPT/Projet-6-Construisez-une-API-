@@ -2,13 +2,14 @@ const express = require('express'); //on importe express avec une constante
 
 const app = express(); //création de notre appli avec express
 
+app.use(express.json()); //pareil que bodyparser
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-
 
 
 /*app.use((req, res, next) => { //fonct middleware dans une app express qui reçoit req/rep et les gère+ les envoie (next)à à la prochaine fonct middleware
@@ -20,9 +21,6 @@ app.use((req, res, next) => {
     res.json({ message: 'Votre requête a bien été reçue !' }); 
  });*/
 
-
-
- 
   /*app.listen(port, () => { //le serveur doit attendre les requêtes envoyées
     console.log(`Example app listening on port ${port}`)
   })
