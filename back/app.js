@@ -3,8 +3,10 @@ const express = require('express'); //on importe express avec une constante
 const app = express(); //création de notre appli avec express
 const mongoose = require('mongoose');
 
-const Thing = require('./models/thing');
+const Thing = require('./models/thing'); //l'enlever ?
 
+const stuffRoutes = require('./routes/stuffs');
+const userRoutes = require('./routes/user');//importation du routeur 
 
 mongoose.connect('mongodb+srv://toto:56_cPy-3@cluster0.m8xxyhv.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -20,6 +22,13 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
+
+
+app.use('/api/stuff', stuffRoutes);
+
+
+module.exports = app; //on exporte cette appli/constante pour pouvoir y accéder depuis les autres fichiers de notre projet comme le serveur node
+
 
   /*
     app.get('/sauces', (req, res, next) => { // pour créer une route entre / je mets le nom de la route /sauces/ que j'ai inventée (pour aller sur une page)
@@ -64,12 +73,7 @@ app.use((req, res, next) => {
       next(); //pour aller au prochain middleware
     })
   */
-    app.use((req, res, next) => { //middleware
-      console.log('Reponse envoyée avec succès !');
-      });
-
-
-module.exports = app; //on exporte cette appli/constante pour pouvoir y accéder depuis les autres fichiers de notre projet comme le serveur node
+   
 
 
 
