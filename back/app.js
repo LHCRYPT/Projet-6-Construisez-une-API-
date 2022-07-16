@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-  
+  /*
     app.get('/sauces', (req, res, next) => { // pour créer une route entre / je mets le nom de la route /sauces/ que j'ai inventée (pour aller sur une page)
       res.send('Array of sauces') //contenu de la page qui sera mis en json
       next(); //pour aller au prochain middleware
@@ -63,7 +63,7 @@ app.use((req, res, next) => {
       res.send('message: String') 
       next(); //pour aller au prochain middleware
     })
-  
+  */
     app.use((req, res, next) => { //middleware
       console.log('Reponse envoyée avec succès !');
       });
