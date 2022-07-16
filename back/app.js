@@ -3,6 +3,15 @@ const express = require('express'); //on importe express avec une constante
 const app = express(); //création de notre appli avec express
 const mongoose = require('mongoose');
 
+const Thing = require('./models/thing');
+
+
+mongoose.connect('mongodb+srv://toto:56_cPy-3@cluster0.m8xxyhv.mongodb.net/?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 app.use(express.json()); //pareil que bodyparser
 
 app.use((req, res, next) => {
@@ -12,20 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-/*app.use((req, res, next) => { //fonct middleware dans une app express qui reçoit req/rep et les gère+ les envoie (next)à à la prochaine fonct middleware
-   console.log('Requête reçue !'); 
-   next(); //pour renvoyer vers le prochain middleware
-});*/
-
-/*app.use((req, res, next) => {
-    res.json({ message: 'Votre requête a bien été reçue !' }); 
- });*/
-
-  /*app.listen(port, () => { //le serveur doit attendre les requêtes envoyées
-    console.log(`Example app listening on port ${port}`)
-  })
-  */
   
     app.get('/sauces', (req, res, next) => { // pour créer une route entre / je mets le nom de la route /sauces/ que j'ai inventée (pour aller sur une page)
       res.send('Array of sauces') //contenu de la page qui sera mis en json
