@@ -6,6 +6,10 @@ const thingSchema = mongoose.Schema({ //on crée un schéma de données avec tou
     imageUrl: { type: String, required: true }, //Pas besoin de mettre un champ pour l'Id puisqu'il est automatiquement généré par Mongoose
     userId: { type: String, required: true },
     price: { type: Number, required: true },
+    likes: { type: Number},
+    dislikes: { type: Number},
+    usersLiked: { type: [String]},
+    usersDisliked: { type: [String]},
   });
   
   module.exports = mongoose.model('Thing', thingSchema); // on exporte ce schéma en tant que modèle Mongoose appelé « Thing », le rendant par là même disponible pour mon application Express
