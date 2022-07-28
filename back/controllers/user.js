@@ -41,16 +41,16 @@ exports.login = (req, res, next) => { // fonction pour connecter des utilisateur
                         { expiresIn: '24h' } //durée de validité du token à 24 heures. L'utilisateur devra donc se reconnecter au bout de 24 heures
                          )
                                                 
-                    }); //res 
-                } //else 
-            })//then
+                    }); 
+                } 
+            })
             .catch(error => { 
                 res.status(500).json( { error } ); //erreurs d'execution de requête dans la base de données
-            }) //catch
+            }) 
             
-        }//else
-   }) // then
+        }
+   }) 
     .catch(error => { 
         res.status(500).json( { error } );
          })
-}; //export 
+}; 
