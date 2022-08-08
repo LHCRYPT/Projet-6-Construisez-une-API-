@@ -4,7 +4,7 @@ const router = express.Router(); //on créé le routeur avec la méthode routeur
 const auth = require('../middleware/auth'); //pour importer ce middleware dans notre routeur
 const multer = require('../middleware/multer-config');
 
-const stuffCtrl = require('../controllers/stuff'); //on importe stuff de controllers avec stuffCtrl
+const sauceCtrl = require('../controllers/stuff'); //on importe stuff de controllers avec stuffCtrl
 
 
 /*router.get('/', auth, stuffCtrl.getAllThings);//pour récupérer toutes les choses
