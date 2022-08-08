@@ -3,7 +3,7 @@ const multer = require('multer'); //on importe multer (qui est un package de ges
 const MIME_TYPES = { //dictionnaire
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
-  'image/png': 'png'
+  'image/png': 'png',
 };
 
 const storage = multer.diskStorage({ // on crée un objet de configuration pour mulder et on l'enregistre sur le disque, méthode diskStorage()  configure le chemin et le nom de fichier pour les fichiers entrants
