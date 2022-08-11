@@ -3,9 +3,9 @@ const app = express(); //pareil que bodyparser
 const mongoose = require('mongoose');
 const path = require('path'); //pour accéder au path de notre serveur 
 
-const Thing = require('./models/thing');
+const sauce = require('./models/sauce');
 
-const stuffRoutes = require('./routes/stuffs');
+const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');//importation du routeur 
 
 mongoose.connect('mongodb+srv://toto:56_cPy-3@cluster0.m8xxyhv.mongodb.net/?retryWrites=true&w=majority',
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes); //on enregistre le routeur lié à l'authentification
 app.use('/images', express.static(path.join(__dirname, 'images'))); //ça indique à Express de gérer la ressource images de manière statique (un sous-répertoire de notre répertoire de base, __dirname) à chaque fois qu'elle reçoit une requête vers la route /images.
 

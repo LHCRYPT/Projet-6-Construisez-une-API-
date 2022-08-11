@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const thingSchema = mongoose.Schema({ //on crée un schéma de données avec toutes les infos ci-dessous dont nos objets ont besoin, pour ma base de données MongoDB
+const sauceSchema = mongoose.Schema({ //on crée un schéma de données avec toutes les infos ci-dessous dont nos objets ont besoin, pour ma base de données MongoDB
     name: { type: String, required: true }, //on crée un objet pour configurer le titre, c'est un champs obligatoire(=required: true)
     description: { type: String, required: true },
     mainPepper: { type: String, required: true },
@@ -15,4 +15,4 @@ const thingSchema = mongoose.Schema({ //on crée un schéma de données avec tou
     usersDisliked: { type: [String]},
   });
   
-  module.exports = mongoose.model('Thing', thingSchema); // on exporte ce schéma en tant que modèle Mongoose appelé « Thing », le rendant par là même disponible pour mon application Express
+  module.exports = mongoose.model('Sauce', sauceSchema); // on exporte ce schéma en tant que modèle Mongoose appelé « Thing », le rendant par là même disponible pour mon application Express
