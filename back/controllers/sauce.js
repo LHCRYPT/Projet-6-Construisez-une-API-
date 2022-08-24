@@ -71,13 +71,13 @@ exports.createSauce = (req, res, next) => { //lié à la route post
     .catch(error => res.status(400).json({ error }));
     };
 
-    exports.userLikeSauce = (req, res, next) => {
+  exports.userLikeSauce = (req, res, next) => {
             let like = req.body.like //on initialise le statut Like
-             let userId = req.body.userId // on récupère userId
+            let userId = req.body.userId // on récupère userId
             let sauceId = req.params.id // on récupère la sauce
-
+console.log (like);
             if (like === 1) { //si les utilisateurs aiment 
-             sauce.updateOne(
+             Sauce.updateOne(
             { _id: sauceId },
             {
             $push: { usersLiked: userId },
@@ -91,7 +91,7 @@ exports.createSauce = (req, res, next) => { //lié à la route post
             { _id: sauceId },
             {
             $push: { usersDisliked: userId },
-            $inc: { dislikes: 1 }
+            $inc: { dislikes: -1 }
       })
             .then(() => res.status(200).json({ message: 'Vous détestez cette sauce !' }))
             .catch(error => res.status(403).json({ message: error.message }));
@@ -101,15 +101,9 @@ exports.createSauce = (req, res, next) => { //lié à la route post
             { _id: sauceId },
             {
             $pull: { usersLiked: userId },
-            $inc: { likes: -1 }
+            $inc: { likes: 0 }
       })
-            .then(() => res.status(200).json({ message: 'Votre avis a été annulé' }))
+            .then(() => res.status(200).json({ message: 'Votre like/dislike a été annulé' }))
             .catch(error => res.status(403).json({ message: error.message }));
   }
 };
-
-exports.likeDislikeSauce = (req, res, next) => { //récupération de l'url par le frontend
-    let like = req.body.like
-         let userId = req.body.userId
-         let sauceId = req.params.Id
-         

@@ -13,4 +13,6 @@ router.get('/:id', auth, sauceCtrl.getOneSauce);
 router.put('/:id', auth, multer, sauceCtrl.modifySauce); //on met multer pour pouvoir modifier des objets
 router.delete('/:id', auth, sauceCtrl.deleteSauce);
 
+router.post('/:id/like', auth, sauceCtrl.userLikeSauce);
+
 module.exports = router; //on réexporte le routeur de ce fichier là
