@@ -96,3 +96,14 @@ exports.createSauce = (req, res, next) => { //lié à la route post
             .then(() => res.status(200).json({ message: 'Vous détestez cette sauce !' }))
             .catch(error => res.status(403).json({ message: error.message }));
   }
+            if (like === 0) { //suppression d'un like ou dislike
+            sauce.updateOne(
+            { _id: sauceId },
+            {
+            $pull: { usersLiked: userId },
+            $inc: { likes: -1 }
+      })
+            .then(() => res.status(200).json({ message: 'Votre avis a été annulé' }))
+            .catch(error => res.status(403).json({ message: error.message }));
+  }
+};
