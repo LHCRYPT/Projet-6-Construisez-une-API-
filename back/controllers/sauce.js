@@ -73,18 +73,26 @@ exports.createSauce = (req, res, next) => { //lié à la route post
 
     *exports.userLikeSauce = (req, res, next) => {
             let like = req.body.like //on initialise le statut Like
-  let userId = req.body.userId // on récupère userId
-  let sauceId = req.params.id // on récupère la sauce
+             let userId = req.body.userId // on récupère userId
+            let sauceId = req.params.id // on récupère la sauce
 
-  if (like === 1) { //si les utilisateurs aiment 
-    sauce.updateOne(
-      { _id: sauceId },
-      {
-        $push: { usersLiked: userId },
-        $inc: { likes: 1 }
+            if (like === 1) { //si les utilisateurs aiment 
+             sauce.updateOne(
+            { _id: sauceId },
+            {
+            $push: { usersLiked: userId },
+            $inc: { likes: 1 }
       })
-
       .then(() => res.status(200).json({ message: 'Vous aimez cette sauce !' }))
       .catch(error => res.status(403).json({ message: error.message }));
   }
-  
+            if (like === -1) { //si les utilisateurs n'aiment pas
+             sauce.updateOne(
+            { _id: sauceId },
+            {
+            $push: { usersDisliked: userId },
+            $inc: { dislikes: 1 }
+      })
+            .then(() => res.status(200).json({ message: 'Vous détestez cette sauce !' }))
+            .catch(error => res.status(403).json({ message: error.message }));
+  }
