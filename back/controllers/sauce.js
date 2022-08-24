@@ -71,7 +71,7 @@ exports.createSauce = (req, res, next) => { //lié à la route post
     .catch(error => res.status(400).json({ error }));
     };
 
-    *exports.userLikeSauce = (req, res, next) => {
+    exports.userLikeSauce = (req, res, next) => {
             let like = req.body.like //on initialise le statut Like
              let userId = req.body.userId // on récupère userId
             let sauceId = req.params.id // on récupère la sauce
@@ -107,3 +107,9 @@ exports.createSauce = (req, res, next) => { //lié à la route post
             .catch(error => res.status(403).json({ message: error.message }));
   }
 };
+
+exports.likeDislikeSauce = (req, res, next) => { //récupération de l'url par le frontend
+    let like = req.body.like
+         let userId = req.body.userId
+         let sauceId = req.params.Id
+         
