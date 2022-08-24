@@ -9,7 +9,7 @@ const sauceSchema = mongoose.Schema({ //on crée un schéma de données avec tou
     mainPepper: { type: String, required: true },
     imageUrl: { type: String, required: true }, //Pas besoin de mettre un champ pour l'Id puisqu'il est automatiquement généré par Mongoose
     heat: { type: Number, required: true },
-    likes: { type: Number : 0},
+    likes: { type: Number},
     dislikes: { type: Number},
     usersLiked: { type: [String]},
     usersDisliked: { type: [String]},
