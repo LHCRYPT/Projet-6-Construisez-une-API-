@@ -72,10 +72,11 @@ exports.createSauce = (req, res, next) => { //lié à la route post
     };
 
     *exports.userLikeSauce = (req, res, next) => {
-        let like = req.body.like //Initialiser le statut Like
-  let userId = req.body.userId //Recuperation de userId
-  let sauceId = req.params.id //Récupération de la sauce
-  if (like === 1) { //si la personne aime
+            let like = req.body.like //on initialise le statut Like
+  let userId = req.body.userId // on récupère userId
+  let sauceId = req.params.id // on récupère la sauce
+
+  if (like === 1) { //si les utilisateurs aiment 
     sauce.updateOne(
       { _id: sauceId },
       {
@@ -83,6 +84,7 @@ exports.createSauce = (req, res, next) => { //lié à la route post
         $inc: { likes: 1 }
       })
 
-      .then(() => res.status(200).json({ message: 'Vous aimez cette sauce !!!' }))
+      .then(() => res.status(200).json({ message: 'Vous aimez cette sauce !' }))
       .catch(error => res.status(403).json({ message: error.message }));
   }
+  
