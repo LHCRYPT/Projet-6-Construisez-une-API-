@@ -3,7 +3,6 @@ const fs = require('fs'); //nouvelle importation. Il s'agit du package fs de Nod
 
 
 exports.createSauce = (req, res, next) => { //lié à la route post
-    
     const sauceObject = JSON.parse(req.body.sauce); //objet envoyé en json parse
     delete sauceObject._id; //on supprime dans cet objet le champ id car il sera généré automatiquement par notre base de donnée
     delete sauceObject._userId; //on supprime dans cet objet le champ userid qui correspond à la personne qui a créée l'objet car nous ne voulons pas faire confiance au client, on utilisera l'id venant du token d'authentification
