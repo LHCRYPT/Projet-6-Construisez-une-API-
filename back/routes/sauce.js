@@ -7,7 +7,7 @@ const multer = require('../middleware/multer-config');
 const sauceCtrl = require('../controllers/sauce'); //on importe stuff de controllers avec stuffCtrl
 
 
-router.get('/', auth, sauceCtrl.getAllSauces);//pour récupérer toutes les choses
+router.get('/', auth, sauceCtrl.getAllSauces);//pour récupérer toutes les sauces
 router.post('/', multer, auth,sauceCtrl.createSauce); //Dans notre routeur stuff, nous importons notre middleware et le passons comme argument aux routes à protéger
 router.get('/:id', auth, sauceCtrl.getOneSauce);
 router.put('/:id', auth, multer, sauceCtrl.modifySauce); //on met multer pour pouvoir modifier des objets

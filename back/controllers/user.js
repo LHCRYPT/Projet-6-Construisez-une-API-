@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken'); //pour créer des token et les vérifier
 const User = require('../models/User');
 
 exports.signup = (req, res, next) => { // fonction pour l'enregistrement de nouveaux utilisateurs
-    bcrypt.hash(req.body.password, 10)//fonct pour crypter mot de passe, 10 tours de l'algorythme d'hachage,plus il y a de tour, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
+    bcrypt.hash(req.body.password, 10)//fonct pour crypter mot de passe, 10 tours de l'algorithme d'hachage,plus il y a de tour, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
     .then(hash => { //méthode asynchrone (then,catch)
       const user = new User({ //création d'un nouvel utilisateur
         email: req.body.email,

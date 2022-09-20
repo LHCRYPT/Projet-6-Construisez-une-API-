@@ -15,4 +15,4 @@ const sauceSchema = mongoose.Schema({ //on crée un schéma de données avec tou
     usersDisliked: { type: [String]},
   });
   
-  module.exports = mongoose.model('Sauce', sauceSchema); // on exporte ce schéma en tant que modèle Mongoose appelé « Thing », le rendant par là même disponible pour mon application Express
+  module.exports = mongoose.model('Sauce', sauceSchema); // on exporte ce schéma en tant que modèle Mongoose appelé « Sauce », le rendant par là même disponible pour mon application Express
